@@ -1,0 +1,9 @@
+<ul>
+  <% images.forEach(({ original, thumbnail }) => { %>
+    <li>
+      <a href="<%= original %>">
+        <img src="<%= thumbnail %>">
+      </a>
+    </li>
+  <% }); %>
+</ul>
