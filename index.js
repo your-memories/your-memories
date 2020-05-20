@@ -37,8 +37,11 @@ function makeOptimizer(optimizerConfig, assetManager) {
 
 		let images = fileNames.map(fileName => {
 			let thumbnailName = addSuffix(fileName, "-thumbnail");
+			let title = path.basename(fileName, path.extname(fileName));
 
 			return {
+				title,
+				detail: `${title}.html`,
 				original: assetManager.manifest.get(
 					`${optimizerConfig.target}/${fileName}`.slice(2)
 				),
@@ -48,8 +51,15 @@ function makeOptimizer(optimizerConfig, assetManager) {
 			};
 		});
 
+		await Promise.all(
+			images.map(async image => {
+				let html = await renderFile("./templates/detail.ejs", { image });
+				return assetManager.writeFile(path.join(target, image.detail), html);
+			})
+		);
+
 		let html = await renderFile("./templates/collection.ejs", { images });
-		return assetManager.writeFile(path.join(target, "index.html"), html);
+		return assetManager.writeFile(path.join(target, `index.html`), html);
 	};
 }
 
