@@ -1,4 +1,11 @@
 module.exports = {
+  sass: [
+    {
+      source: "./scss/index.scss",
+      target: "./html/css/app.css"
+    }
+  ],
+
 	images: [
 		{
 			source: "./photos",
