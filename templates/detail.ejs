@@ -1,6 +1,8 @@
 <%- include('layout/top'); %>
 <%- include('layout/header'); %>
-<h1><%= image.title %></h1>
-<img src="<%= image.original %>">
+<main class="content">
+    <img class="image-large" src="<%= image.original %>">
+    <h3 class="center-text"><%= image.title %></h3>
+</main>
 <%- include('layout/footer'); %>
 <%- include('layout/bottom'); %>

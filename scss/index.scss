@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 
 .hide {
   position:absolute;
@@ -7,12 +10,28 @@
   height:1px;
 }
 
+.content {
+  height: 100%;
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .flex-item {
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.image-large {
+  max-height: 85%;
+  max-width: 95%;
+  margin: 0 auto;
+  display: block;
+}
+
+.center-text {
+  text-align: center;
 }
