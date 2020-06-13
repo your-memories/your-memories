@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'LibreFranklin';
+  src: url('../webfonts/LibreFranklin-Regular.ttf');
+}
+
 html, body {
   height: 100%;
+  font-family: 'LibreFranklin';
+  font-weight: 400;
+  font-style: normal;
 }
 
 .hide {

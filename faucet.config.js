@@ -5,6 +5,12 @@ module.exports = {
 			target: "./html/css/app.css"
 		}
 	],
+	static: [
+		{
+			source: "./webfonts",
+			target: "./html/webfonts"
+		}
+	],
 
 	images: [
 		{

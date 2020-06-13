@@ -1,6 +1,7 @@
 /photos/*
 /node_modules
 /.eslintcache
+.DS_Store
 
 /html
 *jpg
