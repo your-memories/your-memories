@@ -13,9 +13,15 @@ module.exports = {
 	],
 
 	images: [
+
+		{
+			source: "./photos",
+			target: "./html"
+		},
 		{
 			source: "./photos",
 			target: "./html",
+			suffix: "-gallery",
 			format: "webp"
 		},
 		{

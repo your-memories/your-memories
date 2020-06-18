@@ -37,6 +37,7 @@ function makeOptimizer(optimizerConfig, assetManager) {
 
 		let images = fileNames.map(fileName => {
 			let thumbnailName = addSuffix(fileName, "-thumbnail");
+			let galleryName = addSuffix(fileName, "-gallery");
 			let title = path.basename(fileName, path.extname(fileName));
 
 			return {
@@ -47,7 +48,10 @@ function makeOptimizer(optimizerConfig, assetManager) {
 				),
 				thumbnail: assetManager.manifest.get(
 					`${optimizerConfig.target}/${thumbnailName}`.slice(2)
-				)
+				),
+				gallery: assetManager.manifest.get(
+					`${optimizerConfig.target}/${galleryName}`.slice(2)
+				),
 			};
 		});
 
@@ -71,7 +75,7 @@ function addSuffix(filepath, suffix = "") {
 }
 
 function withFileExtension(...extensions) {
-	return filename => extensions.includes(extname(filename));
+	return filename => extensions.includes(extname(filename)) || extensions.includes(extname(filename).toLowerCase());
 }
 
 // extname follows this annoying idea that the dot belongs to the extension
