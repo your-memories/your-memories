@@ -13,7 +13,6 @@ module.exports = {
 	],
 
 	images: [
-
 		{
 			source: "./photos",
 			target: "./html"
