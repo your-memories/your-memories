@@ -75,7 +75,8 @@ function addSuffix(filepath, suffix = "") {
 }
 
 function withFileExtension(...extensions) {
-	return filename => extensions.includes(extname(filename)) ||
+	return filename =>
+		extensions.includes(extname(filename)) ||
 		extensions.includes(extname(filename).toLowerCase());
 }
 
