@@ -1,8 +1,11 @@
 <%- include('layout/top'); %>
 <%- include('layout/header'); %>
 <main class="content">
-    <img class="image-large" src="<%= image.original %>">
+    <img class="image-large" src="<%= image.gallery %>">
     <h3 class="center-text"><%= image.title %></h3>
+    <button>
+    	<a href="<%= image.original %>" download>Download me</a>
+    </button>
 </main>
 <%- include('layout/footer'); %>
 <%- include('layout/bottom'); %>
