@@ -51,7 +51,7 @@ function makeOptimizer(optimizerConfig, assetManager) {
 				),
 				gallery: assetManager.manifest.get(
 					`${optimizerConfig.target}/${galleryName}`.slice(2)
-				),
+				)
 			};
 		});
 
@@ -75,7 +75,8 @@ function addSuffix(filepath, suffix = "") {
 }
 
 function withFileExtension(...extensions) {
-	return filename => extensions.includes(extname(filename)) || extensions.includes(extname(filename).toLowerCase());
+	return filename => extensions.includes(extname(filename)) ||
+		extensions.includes(extname(filename).toLowerCase());
 }
 
 // extname follows this annoying idea that the dot belongs to the extension
