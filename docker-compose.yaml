@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./
+    ports:
+    - "8080:8080"
+    volumes:
+    - type: "bind"
+      source: "./html"
+      target: "/home/node/html"
+    - type: "bind"
+      source: "$PWD/photos"
+      target: "/home/node/photos"
