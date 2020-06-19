@@ -41,6 +41,17 @@ module.exports = {
 		}
 	],
 
+	js: [
+		{
+			source: "./scripts/lazy-loading.js",
+			target: "./html/assets/lazy-loading.js"
+		},
+		{
+			source: "./node_modules/vanilla-lazyload/dist/lazyload.min.js",
+			target: "./html/assets/vanilla-lazyload.min.js"
+		}
+	],
+
 	manifest: {
 		webRoot: "./html"
 	},
