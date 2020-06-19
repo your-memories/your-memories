@@ -61,7 +61,6 @@ function makeOptimizer(optimizerConfig, assetManager) {
 				return assetManager.writeFile(path.join(target, image.detail), html);
 			})
 		);
-
 		let html = await renderFile("./templates/collection.ejs", { images });
 		return assetManager.writeFile(path.join(target, `index.html`), html);
 	};
@@ -71,7 +70,7 @@ function addSuffix(filepath, suffix = "") {
 	let directory = path.dirname(filepath);
 	let extension = path.extname(filepath);
 	let basename = path.basename(filepath, extension);
-	return path.join(directory, `${basename}${suffix}${extension}`);
+	return path.join(directory, `${basename}${suffix}${extension}.webp`);
 }
 
 function withFileExtension(...extensions) {
