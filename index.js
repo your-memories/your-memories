@@ -66,7 +66,7 @@ function makeOptimizer(optimizerConfig, assetManager) {
 
 		await Promise.all(
 			lastImages.map(async image => {
-				let html = await renderFile("./templates/detail.ejs", {image});
+				let html = await renderFile("./templates/detail.ejs", { image });
 				return assetManager.writeFile(path.join(target, image.detail), html);
 			})
 		);
