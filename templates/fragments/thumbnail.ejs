@@ -1,5 +1,8 @@
 <div class="flex-item">
 	<a href="<%= detail %>">
-		<img src="<%= thumbnail %>" loading="lazy">
+		<picture>
+			<source srcset="<%= thumbnail.webp %>" type="image/webp">
+			<img src="<%= thumbnail.jpg %>" loading="lazy">
+		</picture>
 	</a>
 </div>
