@@ -4,6 +4,8 @@ let { promisify } = require("util");
 let ejs = require("ejs");
 let renderFile = promisify(ejs.renderFile);
 
+let lastImages;
+
 module.exports = {
 	key: "yourMemories",
 	bucket: "markup",
@@ -55,13 +57,23 @@ function makeOptimizer(optimizerConfig, assetManager) {
 			};
 		});
 
+		if (!filepaths) {
+			// cache processed images in case of watch triggered run
+			lastImages = images;
+		} else if (images) {
+			// if the run contains new images, concat to cache
+			lastImages.concat(images);
+		}
+
 		await Promise.all(
-			images.map(async image => {
+			lastImages.map(async image => {
 				let html = await renderFile("./templates/detail.ejs", { image });
 				return assetManager.writeFile(path.join(target, image.detail), html);
 			})
 		);
-		let html = await renderFile("./templates/collection.ejs", { images });
+		let html = await renderFile("./templates/collection.ejs", {
+			images: lastImages
+		});
 		return assetManager.writeFile(path.join(target, `index.html`), html);
 	};
 }

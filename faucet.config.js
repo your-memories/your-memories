@@ -44,6 +44,6 @@ module.exports = {
 	manifest: {
 		webRoot: "./html"
 	},
-	watchDirs: ["./photos"],
+	watchDirs: ["./photos", "./templates"],
 	plugins: [require("faucet-pipeline-images"), require(".")]
 };
