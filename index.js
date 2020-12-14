@@ -39,21 +39,20 @@ function makeOptimizer(optimizerConfig, assetManager) {
 
 		let images = fileNames.map(fileName => {
 			let thumbnailName = addSuffix(fileName, "-thumbnail");
+			let thumbnailWebpName = addSuffix(fileName, "-thumbnail-webp");
 			let galleryName = addSuffix(fileName, "-gallery");
+			let galleryWebpName = addSuffix(fileName, "-gallery-webp");
 			let title = path.basename(fileName, path.extname(fileName));
+
+			let g = name =>
+				assetManager.manifest.get(`${optimizerConfig.target}/${name}`.slice(2));
 
 			return {
 				title,
 				detail: `${title}.html`,
-				original: assetManager.manifest.get(
-					`${optimizerConfig.target}/${fileName}`.slice(2)
-				),
-				thumbnail: assetManager.manifest.get(
-					`${optimizerConfig.target}/${thumbnailName}`.slice(2)
-				),
-				gallery: assetManager.manifest.get(
-					`${optimizerConfig.target}/${galleryName}`.slice(2)
-				)
+				original: g(fileName),
+				thumbnail: { jpg: g(thumbnailName), webp: g(thumbnailWebpName) },
+				gallery: { jpg: g(galleryName), webp: g(galleryWebpName) }
 			};
 		});
 
@@ -67,7 +66,7 @@ function makeOptimizer(optimizerConfig, assetManager) {
 
 		await Promise.all(
 			lastImages.map(async image => {
-				let html = await renderFile("./templates/detail.ejs", { image });
+				let html = await renderFile("./templates/detail.ejs", {image});
 				return assetManager.writeFile(path.join(target, image.detail), html);
 			})
 		);
@@ -82,7 +81,7 @@ function addSuffix(filepath, suffix = "") {
 	let directory = path.dirname(filepath);
 	let extension = path.extname(filepath);
 	let basename = path.basename(filepath, extension);
-	return path.join(directory, `${basename}${suffix}${extension}.webp`);
+	return path.join(directory, `${basename}${suffix}${extension}`);
 }
 
 function withFileExtension(...extensions) {

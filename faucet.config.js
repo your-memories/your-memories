@@ -20,13 +20,26 @@ module.exports = {
 		{
 			source: "./photos",
 			target: "./html",
-			suffix: "-gallery",
+			suffix: "-gallery-webp",
 			format: "webp"
 		},
 		{
 			source: "./photos",
 			target: "./html",
+			suffix: "-gallery"
+		},
+		{
+			source: "./photos",
+			target: "./html",
 			format: "webp",
+			suffix: "-thumbnail-webp",
+			width: 300,
+			height: 300,
+			keepRatio: false
+		},
+		{
+			source: "./photos",
+			target: "./html",
 			suffix: "-thumbnail",
 			width: 300,
 			height: 300,

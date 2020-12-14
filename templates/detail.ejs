@@ -1,7 +1,10 @@
 <%- include('layout/top'); %>
 <%- include('layout/header'); %>
 <main class="content">
-    <img class="image-large" src="<%= image.gallery %>">
+    <picture class="image-large">
+        <source srcset="<%= image.gallery.webp %>" type="image/webp">
+        <img src="<%= image.gallery.jpg %>">
+    </picture>
     <h3 class="center-text"><%= image.title %></h3>
     <button>
     	<a href="<%= image.original %>" download>Download me</a>
